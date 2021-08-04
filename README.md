@@ -14,7 +14,9 @@ Ink is a narrative scripting language for games by Inkle Studios. Ink quests can
 It comes together with Inky editor which helps write and test the story flow on the fly.
 
 Ink website: https://www.inklestudios.com/ink
+
 Ink on GitHub: https://github.com/inkle/ink
 
 Inky (editor) download: https://www.github.com/inkle/inky/releases/latest
+
 Inky on GitHub: https://github.com/inkle/inky
