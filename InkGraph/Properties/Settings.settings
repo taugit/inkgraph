@@ -1,0 +1,66 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="InkGraph.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="HighlightInEdges" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="HighlightOutEdges" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="DefaultEdgeColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">LightSlateGray</Value>
+    </Setting>
+    <Setting Name="DefaultEdgeLineWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="ArrowheadLength" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="DefaultNodeColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">DarkSlateGray</Value>
+    </Setting>
+    <Setting Name="DefaultNodeLineWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="HighlightedInEdgeColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Blue</Value>
+    </Setting>
+    <Setting Name="HighlightedOutEdgeColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Red</Value>
+    </Setting>
+    <Setting Name="HighlightedEdgeLineWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="HighlightedInNodeColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Blue</Value>
+    </Setting>
+    <Setting Name="HighlightedOutNodeColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Red</Value>
+    </Setting>
+    <Setting Name="HighlightedNodeLineWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="StartNodeFill" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">166, 223, 157</Value>
+    </Setting>
+    <Setting Name="EndNodeFill" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">122, 179, 255</Value>
+    </Setting>
+    <Setting Name="OrphanNodeFill" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">224, 210, 227</Value>
+    </Setting>
+    <Setting Name="ShowTooltips" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="NodeSeparation" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">30</Value>
+    </Setting>
+    <Setting Name="NodeFontSize" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">15</Value>
+    </Setting>
+    <Setting Name="ToolTipFontSize" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">15</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
