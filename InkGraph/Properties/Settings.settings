@@ -2,12 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="InkGraph.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="HighlightInEdges" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="HighlightOutEdges" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
     <Setting Name="DefaultEdgeColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">LightSlateGray</Value>
     </Setting>
@@ -61,6 +55,9 @@
     </Setting>
     <Setting Name="ToolTipFontSize" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">15</Value>
+    </Setting>
+    <Setting Name="EdgeSeparation" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
     </Setting>
   </Settings>
 </SettingsFile>

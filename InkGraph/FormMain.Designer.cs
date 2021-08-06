@@ -32,9 +32,9 @@ namespace InkGraph
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonOpenInk = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCheck = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonSettings = new System.Windows.Forms.ToolStripButton();
             this.panelLegend = new System.Windows.Forms.Panel();
             this.rtbDetails = new System.Windows.Forms.RichTextBox();
-            this.toolStripButtonSettings = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.panelLegend.SuspendLayout();
             this.SuspendLayout();
@@ -48,7 +48,7 @@ namespace InkGraph
             this.toolStripButtonSettings});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(790, 39);
+            this.toolStrip1.Size = new System.Drawing.Size(632, 27);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -57,7 +57,7 @@ namespace InkGraph
             this.toolStripButtonOpenInk.Image = global::InkGraph.Properties.Resources.open_file;
             this.toolStripButtonOpenInk.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonOpenInk.Name = "toolStripButtonOpenInk";
-            this.toolStripButtonOpenInk.Size = new System.Drawing.Size(95, 36);
+            this.toolStripButtonOpenInk.Size = new System.Drawing.Size(95, 24);
             this.toolStripButtonOpenInk.Text = "Open .ink";
             this.toolStripButtonOpenInk.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
@@ -66,17 +66,26 @@ namespace InkGraph
             this.toolStripButtonCheck.Image = global::InkGraph.Properties.Resources.validate;
             this.toolStripButtonCheck.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonCheck.Name = "toolStripButtonCheck";
-            this.toolStripButtonCheck.Size = new System.Drawing.Size(72, 36);
+            this.toolStripButtonCheck.Size = new System.Drawing.Size(72, 24);
             this.toolStripButtonCheck.Text = "Check";
             this.toolStripButtonCheck.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
+            // toolStripButtonSettings
+            // 
+            this.toolStripButtonSettings.Image = global::InkGraph.Properties.Resources.settings;
+            this.toolStripButtonSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonSettings.Name = "toolStripButtonSettings";
+            this.toolStripButtonSettings.Size = new System.Drawing.Size(86, 24);
+            this.toolStripButtonSettings.Text = "Settings";
+            this.toolStripButtonSettings.Click += new System.EventHandler(this.toolStripButtonSettings_Click);
             // 
             // panelLegend
             // 
             this.panelLegend.Controls.Add(this.rtbDetails);
             this.panelLegend.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelLegend.Location = new System.Drawing.Point(0, 49);
+            this.panelLegend.Location = new System.Drawing.Point(0, 27);
             this.panelLegend.Name = "panelLegend";
-            this.panelLegend.Size = new System.Drawing.Size(81919, 405);
+            this.panelLegend.Size = new System.Drawing.Size(65535, 336);
             this.panelLegend.TabIndex = 1;
             // 
             // rtbDetails
@@ -86,17 +95,9 @@ namespace InkGraph
             this.rtbDetails.Location = new System.Drawing.Point(0, 0);
             this.rtbDetails.Name = "rtbDetails";
             this.rtbDetails.ReadOnly = true;
-            this.rtbDetails.Size = new System.Drawing.Size(65535, 405);
+            this.rtbDetails.Size = new System.Drawing.Size(65535, 336);
             this.rtbDetails.TabIndex = 2;
             this.rtbDetails.Text = "";
-            // 
-            // toolStripButtonSettings
-            // 
-            this.toolStripButtonSettings.Image = global::InkGraph.Properties.Resources.settings;
-            this.toolStripButtonSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonSettings.Name = "toolStripButtonSettings";
-            this.toolStripButtonSettings.Size = new System.Drawing.Size(86, 36);
-            this.toolStripButtonSettings.Text = "Settings";
             // 
             // FormMain
             // 

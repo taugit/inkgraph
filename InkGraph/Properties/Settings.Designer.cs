@@ -25,30 +25,6 @@ namespace InkGraph.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool HighlightInEdges {
-            get {
-                return ((bool)(this["HighlightInEdges"]));
-            }
-            set {
-                this["HighlightInEdges"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool HighlightOutEdges {
-            get {
-                return ((bool)(this["HighlightOutEdges"]));
-            }
-            set {
-                this["HighlightOutEdges"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("LightSlateGray")]
         public global::System.Drawing.Color DefaultEdgeColor {
             get {
@@ -260,6 +236,18 @@ namespace InkGraph.Properties {
             }
             set {
                 this["ToolTipFontSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int EdgeSeparation {
+            get {
+                return ((int)(this["EdgeSeparation"]));
+            }
+            set {
+                this["EdgeSeparation"] = value;
             }
         }
     }

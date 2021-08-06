@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -69,7 +68,7 @@ namespace InkGraph
 
             _tTip = new CustomToolTip();
             _tTip.Active = false;
-            _tTip.AutoPopDelay = 32000;
+            _tTip.AutoPopDelay = 30000;
             _tTip.InitialDelay = 1;
             _tTip.ReshowDelay = 1;
 
@@ -138,7 +137,7 @@ namespace InkGraph
                     if (edge.SourceNode != null && edge.SourceNode != curNode)
                     {
                         edge.SourceNode.Attr.Color = Utils.ConvertToMsaglColor(Properties.Settings.Default.HighlightedInNodeColor);
-                        edge.SourceNode.Attr.LineWidth = Properties.Settings.Default.HighlightedEdgeLineWidth; ;
+                        edge.SourceNode.Attr.LineWidth = Properties.Settings.Default.HighlightedEdgeLineWidth;
                     }
                 }
 
@@ -224,38 +223,31 @@ namespace InkGraph
             if (selectedObject == e.OldObject)
                 return;
 
-            if (selectedObject != null)
+            if (selectedObject != null && (selectedObject is Edge || selectedObject is Node))
             {
-                if (selectedObject is Edge || selectedObject is Node)
+                var cData = (CustomData)selectedObject.UserData;
+                if (cData == null)
                 {
-                    // Highlight?
-                    //selectedObjectAttr = (gViewer.SelectedObject as Node).Attr.Clone();
-                    //(selectedObject as Node).Attr.Color = Microsoft.Msagl.Drawing.Color.Magenta;
-
-                    var cData = (CustomData)selectedObject.UserData;
-                    if (cData == null)
-                    {
-                        _tTip.Active = false;
-                        return;
-                    }
-
+                    _tTip.Active = false;
+                }
+                else
+                {
                     _tTip._text = string.Join(Environment.NewLine, cData.Actions);
                     _tTip.Active = true;
                     _viewer.SetToolTip(_tTip, string.Join(Environment.NewLine, cData.Actions));
-
-                    return;
                 }
             }
-            _tTip.Active = false;
+            else
+            {
+                _tTip.Active = false;
+            }
 
         }
         #endregion
 
-        private void DrawInkGraph(string[] content)
+        private void BuildGraph(string[] content)
         {
             _graph = new Graph();
-            // Distance between connected nodes
-            _graph.LayoutAlgorithmSettings.NodeSeparation = Properties.Settings.Default.NodeSeparation;
             var curScene = string.Empty;
             var sceneReg = new Regex(@"\=\=\= (?<scene>\w+) \=\=\=");
             var dialogueDivertReg = new Regex(@"(\*|\+)(?<desc>.*)-> (?<scene>\w+)");
@@ -282,7 +274,7 @@ namespace InkGraph
                     rawText.Add(s);
                     curScene = m.Groups["scene"].Value;
 
-                    _graph.AddNode(curScene).Label.FontSize = Properties.Settings.Default.NodeFontSize;
+                    _graph.AddNode(curScene);
                     continue;
                 }
                 rawText.Add(s);
@@ -292,26 +284,15 @@ namespace InkGraph
                 if (m.Success)
                 {
                     if (curScene != string.Empty)
-                    {
-                        //_graph.AddEdge(curScene, m.Groups["scene"].Value).Attr.Separation = 1;
-                        var e = _graph.AddEdge(curScene, m.Groups["scene"].Value);
-                        e.Attr.Color = Utils.ConvertToMsaglColor(Properties.Settings.Default.DefaultEdgeColor);
-                        e.Attr.LineWidth = Properties.Settings.Default.DefaultEdgeLineWidth;
-                        e.Attr.ArrowheadLength = Properties.Settings.Default.ArrowheadLength;
-                    }
+                        _graph.AddEdge(curScene, m.Groups["scene"].Value);
                     continue;
                 }
+
                 m = absDivertReg.Match(s);
                 if (m.Success)
                 {
                     if (curScene != string.Empty)
-                    {
-                        //_graph.AddEdge(curScene, m.Groups["scene"].Value).Attr.Separation = 1;
-                        var e = _graph.AddEdge(curScene, m.Groups["scene"].Value);
-                        e.Attr.Color = Utils.ConvertToMsaglColor(Properties.Settings.Default.DefaultEdgeColor);
-                        e.Attr.LineWidth = Properties.Settings.Default.DefaultEdgeLineWidth;
-                        e.Attr.ArrowheadLength = Properties.Settings.Default.ArrowheadLength;
-                    }
+                        _graph.AddEdge(curScene, m.Groups["scene"].Value);
                     continue;
                 }
 
@@ -330,9 +311,19 @@ namespace InkGraph
                     continue;
                 }
             }
+            PaintGraph();
+            _viewer.Graph = _graph;
+        }
+
+        private void PaintGraph()
+        {
+            // Distance between connected nodes
+            _graph.LayoutAlgorithmSettings.NodeSeparation = Properties.Settings.Default.NodeSeparation;
 
             foreach (var n in _graph.Nodes)
             {
+                n.Label.FontSize = Properties.Settings.Default.NodeFontSize;
+
                 // Margin between label and box
                 n.Attr.LabelMargin = 5;
                 // Distance between arrow and node
@@ -356,11 +347,19 @@ namespace InkGraph
                     // end node
                     n.Attr.FillColor = Utils.ConvertToMsaglColor(Properties.Settings.Default.EndNodeFill); ;
                 }
-
             }
-            _viewer.Graph = _graph;
-        }
 
+            foreach (var e in _graph.Edges)
+            {
+                e.Attr.Color = Utils.ConvertToMsaglColor(Properties.Settings.Default.DefaultEdgeColor);
+                e.Attr.LineWidth = Properties.Settings.Default.DefaultEdgeLineWidth;
+                e.Attr.ArrowheadLength = Properties.Settings.Default.ArrowheadLength;
+                e.Attr.Separation = Properties.Settings.Default.EdgeSeparation;
+            }
+
+            _viewer.Graph = _graph;
+            _viewer.Invalidate();
+        }
 
 
         private void toolStripButton1_Click(object sender, EventArgs e)
@@ -371,7 +370,7 @@ namespace InkGraph
                 d.RestoreDirectory = true;
 
                 if (d.ShowDialog() == DialogResult.OK)
-                    DrawInkGraph(File.ReadAllLines(d.FileName));
+                    BuildGraph(File.ReadAllLines(d.FileName));
             }
         }
 
@@ -422,6 +421,15 @@ namespace InkGraph
             if (sb.Length == 0)
                 sb.Append("No issues found");
             rtbDetails.Text = sb.ToString();
+        }
+
+        private void toolStripButtonSettings_Click(object sender, EventArgs e)
+        {
+            var sForm = new FormSettings();
+            if (sForm.ShowDialog() == DialogResult.OK)
+            {
+                PaintGraph();
+            }
         }
     }
 }
