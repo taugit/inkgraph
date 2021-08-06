@@ -249,11 +249,11 @@ namespace InkGraph
         {
             _graph = new Graph();
             var curScene = string.Empty;
-            var sceneReg = new Regex(@"\=\=\= (?<scene>\w+) \=\=\=");
-            var dialogueDivertReg = new Regex(@"(\*|\+)(?<desc>.*)-> (?<scene>\w+)");
-            var absDivertReg = new Regex(@"^-> (?<scene>\w+)$");
+            var sceneReg = new Regex(@"\=\=\=\s*(?<scene>\w+)\s*\=\=\=");
+            var dialogueDivertReg = new Regex(@"(\*|\+)\s*(?<desc>.*)\s*->\s*(?<scene>\w+)");
+            var absDivertReg = new Regex(@"^->\s*(?<scene>\w+)\s*$");
             var condReg = new Regex(@"{(?<cond>:)");
-            var funcReg = new Regex(@"^~(?<func>.*)$");
+            var funcReg = new Regex(@"^~\s*(?<func>.*)$");
 
             var rawText = new List<string>();
 
